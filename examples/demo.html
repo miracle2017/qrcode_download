@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Demo page(生成图片并生成下载图片,实现下载功能)</title>
+</head>
+<body>
+<p>
+    TODO make a nice looking pure client qrcode generator
+    even allow download of the image
+</p>
+
+<div id="output"></div>
+
+<script src="../src/jquery.min.js"></script>
+<script type="text/javascript" src="../jquery.qrcode.min.js"></script>
+<script>
+    jQuery(function () {
+        jQuery('#output').qrcode("http://www.ylnysm.com");
+    });
+    window.onload = function () {
+        let drawing = document.getElementsByTagName('canvas')[0];
+        //确定浏览器支持<canvas>元素
+        if (drawing.getContext) {
+            let context = drawing.getContext('2d');
+            console.log(context);
+            //取得图像的数据 URI
+            let imgURI = drawing.toDataURL("image/png");
+            //显示图像
+            let image = document.createElement("img");
+            image.src = imgURI;
+            document.body.appendChild(image);
+            //显示下载链接
+            let a = document.createElement("a");
+            a.href = imgURI;
+            a.innerText = '下载';
+            a.download = 'test.png';
+            document.body.appendChild(a);
+        }
+    }
+</script>
+</body>
+</html>
