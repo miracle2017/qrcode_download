@@ -15,6 +15,7 @@
 <script type="text/javascript" src="../jquery.qrcode.min.js"></script>
 <script>
     jQuery(function () {
+        //http://www.ylnysm.com可以自定义任意你要的链接或者文字
         jQuery('#output').qrcode("http://www.ylnysm.com");
     });
     window.onload = function () {
@@ -32,7 +33,9 @@
             //显示下载链接
             let a = document.createElement("a");
             a.href = imgURI;
+            //设置下载链接的文字提示
             a.innerText = 'download';
+            //设置下载的文件名
             a.download = 'test.png';
             document.body.appendChild(a);
         }
